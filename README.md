@@ -3,7 +3,7 @@ Measure and show FPS and (on iOS) CPU usage!
 
 [![Demo video on YouTube](https://img.youtube.com/vi/qeqWDWCYbvY/0.jpg)](https://www.youtube.com/watch?v=qeqWDWCYbvY)
 
-_20 sec video, show the plugin on iOS and Android_
+_20 sec video, showing off the plugin on iOS and Android_
 
 ## Installation
 From the command prompt go to your app's root folder and execute:
