@@ -44,7 +44,7 @@ performanceMonitor.start({
     console.log("FPS: " + sample.fps);
     if (sample.cpu) { // iOS only
       console.log("CPU %: " + sample.cpu);
-	 }
+    }
   }
 });
 ```
@@ -66,9 +66,16 @@ performanceMonitor.start({
     console.log("FPS: " + sample.fps);
     if (sample.cpu) { // iOS only
       console.log("CPU %: " + sample.cpu);
-	 }
+    }
   }
 });
+```
+
+## Stop monitoring
+To stop receiving measurements and hide the monitor UI you can simply do this:
+
+```js
+performanceMonitor.stop();
 ```
 
 ## Usage with Angular
