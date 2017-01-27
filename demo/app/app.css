@@ -1,0 +1,23 @@
+﻿Page {
+  background-color: aliceblue;
+}
+
+.outer {
+  padding: 40;
+}
+
+.message {
+  color: #000;
+  font-size: 20;
+  horizontal-align: center;
+  padding:20;
+}
+
+Button {
+  background-color: #3598db;
+  color: #ffffff;
+  padding: 8 16;
+  margin: 8;
+  font-size: 14;
+  border-radius: 4;
+}

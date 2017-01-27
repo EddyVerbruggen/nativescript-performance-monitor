@@ -1,0 +1,11 @@
+android {
+    productFlavors {
+        "perfview" {
+            dimension "perfview"
+        }
+    }
+}
+
+dependencies {
+    compile 'jp.wasabeef:takt:1.0.3'
+}

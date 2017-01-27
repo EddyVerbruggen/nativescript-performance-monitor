@@ -1,0 +1,20 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" loaded="pageLoaded">
+  <StackLayout class="outer">
+
+    <StackLayout orientation="horizontal" horizontalAlignment="center">
+      <Button text="Start" tap="{{ onStartTap }}"/>
+      <Button text="Stop" tap="{{ onStopTap }}"/>
+    </StackLayout>
+
+    <StackLayout orientation="horizontal" visibility="{{ active ? 'visible' : 'collapsed' }}">
+      <Label text="{{ fps }}" class="message" textWrap="true"/>
+      <Label text="FPS" class="message" textWrap="true"/>
+    </StackLayout>
+    <iOS>
+      <StackLayout orientation="horizontal" visibility="{{ active ? 'visible' : 'collapsed' }}">
+        <Label text="{{ cpu}}" class="message" textWrap="true"/>
+        <Label text="% CPU usage" class="message" textWrap="true"/>
+      </StackLayout>
+    </iOS>
+  </StackLayout>
+</Page>

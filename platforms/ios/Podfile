@@ -1,0 +1,1 @@
+pod 'GDPerformanceView', :git => 'https://github.com/EddyVerbruggen/GDPerformanceView.git', :commit => '5d3281f1bb3fb66fa0a3a6ed7ef331eb135ecd17'
