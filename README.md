@@ -31,6 +31,10 @@ import { Color } from "color";
 
 const performanceMonitor: PerformanceMonitor = new PerformanceMonitor();
 
+// this would suffice..
+performanceMonitor.start();
+
+// .. but we want to show off the options ;)
 performanceMonitor.start({
   textColor: new Color("white"),
   backgroundColor: new Color("black"),
@@ -53,10 +57,6 @@ var color = require("color");
 
 var performanceMonitor = new perfMon.PerformanceMonitor();
 
-// this would suffice..
-// performanceMonitor.start();
-
-// .. but we want to show off the options ;)
 performanceMonitor.start({
   textColor: new color.Color("white"),
   backgroundColor: new color.Color("black"),
