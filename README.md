@@ -17,34 +17,11 @@ After adding the plugin you can start monitoring from code. There are a few opti
 
 | Option | iOS? | Android? | Description
 --- | --- | --- | ---
-| `onSample?` | :white_check_mark: | : white_check_mark: | A callback function that gets invoked on every sample. If you don't want to use the default UI of this plugin you can use this to render your own UI. See the examples below for the function spec.
-| `hide?` | :white_check_mark: | : white_check_mark: | Set to `true` if you don't want the default UI to show. So roll your own or go ito stealth mode entirely.
-| `textColor?` | :white_check_mark: | : white_check_mark: | The text color of the monitor view (default white).
-| `backgroundColor?` | :white_check_mark: | : white_medium_square: | Background color of the monitor view (default black).
+| `onSample?` | :white_check_mark: | :white_check_mark: | A callback function that gets invoked on every sample. If you don't want to use the default UI of this plugin you can use this to render your own UI. See the examples below for the function spec.
+| `hide?` | :white_check_mark: | :white_check_mark: | Set to `true` if you don't want the default UI to show. So roll your own or go ito stealth mode entirely.
+| `textColor?` | :white_check_mark: | :white_check_mark: | The text color of the monitor view (default white).
+| `backgroundColor?` | :white_check_mark: | :white_medium_square: | Background color of the monitor view (default black).
 | `borderColor?` | :white_check_mark: | :white_medium_square: | The border color of the monitor view (default black).
-
-
-### JavaScript
-
-```js
-var perfMon = require("nativescript-performance-monitor");
-var color = require("color");
-
-var performanceMonitor = new perfMon.PerformanceMonitor();
-
-performanceMonitor.start({
-  textColor: new color.Color("white"),
-  backgroundColor: new color.Color("black"),
-  borderColor: new color.Color("black"),
-  hide: false,
-  onSample: function (sample) {
-    console.log("FPS: " + sample.fps);
-    if (sample.cpu) { // iOS only
-      console.log("CPU %: " + sample.cpu);
-	 }
-  }
-});
-```
 
 ### TypeScript
 
@@ -60,6 +37,32 @@ performanceMonitor.start({
   borderColor: new Color("black"),
   hide: false,
   onSample: (sample: PerformanceMonitorSample) => {
+    console.log("FPS: " + sample.fps);
+    if (sample.cpu) { // iOS only
+      console.log("CPU %: " + sample.cpu);
+	 }
+  }
+});
+```
+
+### JavaScript
+
+```js
+var perfMon = require("nativescript-performance-monitor");
+var color = require("color");
+
+var performanceMonitor = new perfMon.PerformanceMonitor();
+
+// this would suffice..
+// performanceMonitor.start();
+
+// .. but we want to show off the options ;)
+performanceMonitor.start({
+  textColor: new color.Color("white"),
+  backgroundColor: new color.Color("black"),
+  borderColor: new color.Color("black"),
+  hide: false,
+  onSample: function (sample) {
     console.log("FPS: " + sample.fps);
     if (sample.cpu) { // iOS only
       console.log("CPU %: " + sample.cpu);
