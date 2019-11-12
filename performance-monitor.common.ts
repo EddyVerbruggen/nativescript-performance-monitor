@@ -1,4 +1,4 @@
-import { Color } from "color";
+import { Color } from "tns-core-modules/color";
 
 export interface PerformanceMonitorSample {
   fps?: number;

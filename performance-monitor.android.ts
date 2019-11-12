@@ -1,5 +1,5 @@
 import { PerformanceMonitorApi, PerformanceMonitorStartOptions } from "./performance-monitor.common";
-import * as appModule from "application";
+import * as appModule from "tns-core-modules/application";
 
 declare let jp: any;
 

@@ -1,6 +1,6 @@
-import { Observable } from 'data/observable';
-import { PerformanceMonitor, PerformanceMonitorSample } from 'nativescript-performance-monitor';
-import { Color } from "color";
+import { PerformanceMonitor, PerformanceMonitorSample } from "nativescript-performance-monitor";
+import { Color } from 'tns-core-modules/color';
+import { Observable } from "tns-core-modules/data/observable";
 
 export class HelloWorldModel extends Observable {
   private performanceMonitor: PerformanceMonitor;

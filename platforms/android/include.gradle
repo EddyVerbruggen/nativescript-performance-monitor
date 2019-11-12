@@ -1,9 +1,5 @@
 android {
-    productFlavors {
-        "perfview" {
-            dimension "perfview"
-        }
-    }
+
 }
 
 dependencies {

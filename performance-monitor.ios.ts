@@ -1,14 +1,8 @@
-import { PerformanceMonitorApi, PerformanceMonitorStartOptions, PerformanceMonitorSample } from "./performance-monitor.common";
+import { PerformanceMonitorApi, PerformanceMonitorSample, PerformanceMonitorStartOptions } from "./performance-monitor.common";
 
-declare let GDPerformanceMonitor, GDPerformanceMonitorDelegate: any;
-
-/**
- * See https://github.com/EddyVerbruggen/GDPerformanceView
- */
 export class PerformanceMonitor implements PerformanceMonitorApi {
-
-  private _monitor: any; /* GDPerformanceMonitor */
-  private _delegate: any; /* GDPerformanceMonitorDelegate */
+  private _monitor: GDPerformanceMonitor;
+  private _delegate: GDPerformanceMonitorDelegate;
 
   public start(options?: PerformanceMonitorStartOptions): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -31,8 +25,7 @@ export class PerformanceMonitor implements PerformanceMonitorApi {
       this._monitor.deviceVersionHidden = true;
 
       if (opts.onSample) {
-        this._delegate = GDPerformanceMonitorDelegateImpl.initWithOwner(new WeakRef(this));
-        this._delegate.setCallback(opts.onSample);
+        this._delegate = GDPerformanceMonitorDelegateImpl.initWithOwnerAndCallback(new WeakRef(this), opts.onSample);
         this._monitor.delegate = this._delegate;
       }
 
@@ -56,26 +49,21 @@ export class PerformanceMonitor implements PerformanceMonitorApi {
   }
 }
 
-// - delegates
-class GDPerformanceMonitorDelegateImpl extends NSObject /* implements GDPerformanceMonitorDelegate */ {
+class GDPerformanceMonitorDelegateImpl extends NSObject implements GDPerformanceMonitorDelegate {
   public static ObjCProtocols = [GDPerformanceMonitorDelegate];
 
   private _owner: WeakRef<any>;
+  private _callback: (sample: PerformanceMonitorSample) => void;
 
-  public static initWithOwner(owner: WeakRef<any>): GDPerformanceMonitorDelegateImpl {
+  public static initWithOwnerAndCallback(owner: WeakRef<any>, callback: (PerformanceMonitorSample) => void): GDPerformanceMonitorDelegateImpl {
     let delegate = <GDPerformanceMonitorDelegateImpl>GDPerformanceMonitorDelegateImpl.new();
     delegate._owner = owner;
+    delegate._callback = callback;
     return delegate;
   }
 
   static new(): GDPerformanceMonitorDelegateImpl {
     return <GDPerformanceMonitorDelegateImpl>super.new();
-  }
-
-  private _callback: (sample: PerformanceMonitorSample) => void;
-
-  public setCallback(callback: (sample: PerformanceMonitorSample) => void): void {
-    this._callback = callback;
   }
 
   public performanceMonitorDidReportFPSCPU(fps: number, cpu: number) {
